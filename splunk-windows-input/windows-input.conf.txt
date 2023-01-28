@@ -1,0 +1,863 @@
+[WinEventLog]
+renderXml = true
+
+# ---------------------
+#   Security channel
+# ---------------------
+
+[WinEventLog://Security]
+disabled = 0
+whitelist1 = EventCode=%^(1100|1101|1102|1104|1105|1108|4608|4609|4610|4611|4614|4616|4621|4622|4624|4625|4648|4649|4656|4661|4662|4672|4673|4674|4675|4688|4697|4698|4699|4700|4701|4702|4703|4704|4705|4706|4707|4713|4715|4716|4717|4718|4719|4720|4722|4723|4724|4725|4726|4727|4728|4729|4730|4731|4732|4733|4734|4735|4737|4738|4739|4740|4741|4742|4743|4754|4755|4756|4757|4758|4764|4765|4766|4767|4768|4769|4771|4772|4773|4776|4777|4780|4781|4782|4794|4797|4798|4799|4817|4820|4821|4822|4823|4824|4825|4830|4864|4865|4866|4867|4868|4869|4870|4871|4872|4873|4874|4875|4876|4877|4878|4879|4880|4881|4882|4883|4884|4885|4886|4887|4888|4889|4890|4891|4892|4893|4894|4895|4896|4897|4898|4899|4900|4902|4904|4905|4906|4907|4908|4912|4928|4929|4930|4931|4934|4935|4936|4937|4964|5038|5120|5121|5122|5123|5124|5125|5126|5127|5136|5137|5138|5139|5141|5148|5149|5169|5170|5376|5377|5379|5381|5382|6272|6273|6274|6275|6276|6277|6278|6279|6280|6281|6410|6416|6419|6420|6421|6422|6423|6424)$%
+# 1100: Event logging service has shut down / MITRE TTP T1562.002 - Disable Windows Event Logging
+# 1101: Audit events have been dropped by the transport.
+# 1102: Event log cleared / MITRE TTP T1070.001 - Indicator Removal on Host
+# 1104: Security log is now full / MITRE TTP T1562.002 - Disable Windows Event Logging 
+# 1105: Event log automatic backup
+# 1108: The event logging service encountered an error  / MITRE TTP T1562.002 - Disable Windows Event Logging 
+# 4776: The computer attempted to validate the credentials for an account / MITRE TTP T1110 - Brutforce
+# 4777: The domain controller failed to validate the credentials for an account / MITRE TTP T1110 - Brutforce
+# 4822: NTLM authentication failed because the account was a member of the Protected User group. / MITRE TTP T1078.002 - Valid Accounts: Domain Accounts 
+# 4823: NTLM authentication failed because access control restrictions are required. / MITRE TTP T1078.002 - Valid Accounts: Domain Accounts 
+# 4768: A Kerberos authentication ticket (TGT) was requested / MITRE TTP T1558 - Steal or Forge Kerberos Tickets 
+# 4768: A Kerberos authentication ticket (TGT) was requestedFailure / MITRE TTP T1110 - Brutforce
+# 4771: Kerberos preauthentication failed / MITRE TTP T1110 - Brutforce
+# 4772: A Kerberos authentication ticket request failed / MITRE TTP T1110 - Brutforce
+# 4820: A Kerberos Ticket granting ticket (TGT) was denied because the device does not meet the access control restrictions. / MITRE TTP T1078.002 - Valid Accounts: Domain Accounts 
+# 4824: Kerberos preauthentication by using DES or RC4 failed because the account was a member of the Protected User group. / MITRE TTP T1078.002 - Valid Accounts: Domain Accounts 
+# 4769: A Kerberos service ticket was required / MITRE TTP T1558 - Steal or Forge Kerberos Tickets 
+# 4769: A Kerberos service ticket was required / MITRE TTP T1558 - Steal or Forge Kerberos Tickets 
+# 4773: A Kerberos service ticket request failed / MITRE TTP T1110 - Brutforce
+# 4821: A Kerberos service ticket was denied because the user, device, or both does not meet the access control restrictions. / MITRE TTP T1078.002 - Valid Accounts: Domain Accounts 
+# 4741: A computer account was created / MITRE TTP T1136 - Create account
+# 4742: A computer account was changed / MITRE TTP T1098 - Account manipulation
+# 4743: A computer account was deleted / MITRE TTP T1098 - Account manipulation
+# 4782: The password hash of an account was accessed / MITRE TTP T1003 - OS credential dumping
+# 4731: A security-enabled Local group was created
+# 4732: A member was added to a security-enabled Local group / MITRE TTP T1098 - Account manipulation
+# 4733: A member was removed from a security-enabled Local group / MITRE TTP T1098 - Account manipulation
+# 4734: A security-enabled Local group was deleted
+# 4735: A security-enabled Local group was changed
+# 4764: A group's type was changed
+# 4799: A security-enabled Local group membership was enumerated / MITRE TTP T1069.002 - Permission Groups Discovery: Domain Groups 
+# 4727: A security-enabled Global group was created
+# 4728: A member was added to a security-enabled Global group / MITRE TTP T1098 - Account manipulation
+# 4729: A member was removed from a security-enabled Global group / MITRE TTP T1098 - Account manipulation
+# 4730: A security-enabled Global group was deleted 
+# 4737: A security-enabled Global group was changed 
+# 4754: A security-enabled Universal group was created 
+# 4756: A member was added to a security-enabled Universal group / MITRE TTP T1098 - Account manipulation
+# 4757: A member was removed from a security-enabled Universal group / MITRE TTP T1098 - Account manipulation
+# 4758: A security-enabled Universal group was deleted
+# 4755: A security-enabled Universal group was changed
+# 4720: A user account was created / MITRE TTP T1136 - Create account
+# 4722: A user account was enabled / MITRE TTP T1098 - Account manipulation
+# 4723: An attempt was made to change an account's password / MITRE TTP T1098 - Account manipulation
+# 4724: An attempt was made to reset an account's password / MITRE TTP T1098 - Account manipulation
+# 4725: A user account was disabled / MITRE TTP T1098 - Account manipulation
+# 4726: A user account was deleted
+# 4738: A user account was changed / MITRE TTP T1098 - Account manipulation
+# 4740: A user account was locked out / MITRE TTP T1110 - Brutforce
+# 4765: SID History was added to an account / MITRE TTP T1134.005 - Access Token Manipulation: SIDHistory Injection
+# 4767: A user account was unlocked / MITRE TTP T1110 - Brutforce
+# 4780: The ACL was set on accounts which are members of administrators groups / MITRE TTP T1098 - Account manipulation
+# 4781: The name of an account was changed / MITRE TTP T1098 - Account manipulation
+# 4794: An attempt was made to set the Directory Service Restore Mode administrator password / MITRE TTP T1003.003 - OS CredentialDumping NTDS
+# 4797: An attempt was made to query the existence of a blank password for an account.
+# 4798: A user's local group membership was enumerated / MITRE TTP T1069.001 - Permission Groups Discovery: Local Groups 
+# 4830: SID History was removed from an account / MITRE TTP T1134.005 - Access Token Manipulation: SIDHistory Injection
+# 5376: Credential Manager credentials were backed up / MITRE TTP T1555.004 - Credentials from Password Stores: Windows Credential Manager 
+# 5377: Credential Manager credentials were restored from backup
+# 5379: Credential Manager credentials were read / MITRE TTP T1555.004 - Credentials from Password Stores: Windows Credential Manager 
+# 5381: Vault credentials were enumerated / MITRE TTP T1555.004 - Credentials from Password Stores: Windows Credential Manager 
+# 5382: Vault credentials were read / MITRE TTP T1555.004 - Credentials from Password Stores: Windows Credential Manager 
+# 4723: An attempt was made to change an account's passwordFailure / MITRE TTP T1098 - Account manipulation
+# 4724: An attempt was made to reset an account's passwordFailure / MITRE TTP T1098 - Account manipulation
+# 4766: An attempt to add SID History to an account failed / MITRE TTP T1134.005 - Access Token Manipulation: SIDHistory Injection
+# 4794: An attempt was made to set the Directory Service Restore Mode administrator passwordFailure / MITRE TTP T1098 - Account manipulation
+# 6416: A new external device was recognised by the System / MITRE TTP T1091 - Replication Through Removable Media 
+# 6419: A request was made too disable a device
+# 6420: A device was disabled
+# 6421: A request was made to enable a device
+# 6422: A device was enabled
+# 6423: The installation of this device is forbidden by system policy / MITRE TTP T1091 - Replication Through Removable Media 
+# 6424: The installation of this device was allowed, after having previously been forbidden by policy
+# 4688: A new process has been created (2) / MITRE TTP Too many, cannot be listed - 
+# 4928: An Active Directory replica source naming context was establishedSucess / MITRE TTP T1207 - Rogue domain controler
+# 4929: An Active Directory replica source naming context was removed / MITRE TTP T1207 - Rogue domain controler
+# 4930: An Active Directory replica source naming context was modified / MITRE TTP T1207 - Rogue domain controler
+# 4931: An Active Directory replica destination naming context was modified / MITRE TTP T1207 - Rogue domain controler
+# 4934: Attributes of an Active Directory object were replicated
+# 4936: Replication failure ends
+# 4937: A lingering object was removed from a replica
+# 4964: Special groups assigned to new logon (requires registry configuration with group SID to monitor). Can be combined together with ID 4627 / MITRE TTP T1078 - Valid accounts
+# 4928: An Active Directory replica source naming context was establishedFailure / MITRE TTP T1207 - Rogue domain controler
+# 4929: An Active Directory replica source naming context was removedFailure / MITRE TTP T1207 - Rogue domain controler
+# 4930: An Active Directory replica source naming context was modifiedFailure / MITRE TTP T1207 - Rogue domain controler
+# 4931: An Active Directory replica destination naming context was modifiedFailure / MITRE TTP T1207 - Rogue domain controler
+# 4935: Replication failure begins
+# 4662: An operation was performed on an object / MITRE TTP T1069.002 - Discovery domain groups
+# 4661: A handle to an object was requeste / MITRE TTP T1201 - Password Policy Discovery
+# 4662: An operation was performed on an objectFailure
+# 4661: A handle to an object was requesteFailure
+# 5136: A directory service object was modified / MITRE TTP T1222.001 - File and Directory Permissions Modification
+# 5137: A directory service object was created / MITRE TTP T1207 - Rogue domain controler
+# 5138: A directory service object was undeleted
+# 5139: A directory service object was moved
+# 5141: A directory service object was deleted
+# 5169: A directory service object was modified
+# 5170: A directory service object was modified during a background cleanup task
+# 4625: An account failed to log on / MITRE TTP T1110 - Brutforce
+# 4624: An account was successfully logged on / MITRE TTP T1078 - Valid accounts
+# 4648: A logon was attempted using explicit credentials / MITRE TTP T1134.002 - Access Token Manipulation: Create Process with Token
+# 4675: SIDs were filtered / MITRE TTP T1134.005 - Access Token Manipulation: SIDHistory Injection
+# 4625: An account failed to log on / MITRE TTP T1110 - Brutforce
+# 6272: Network Policy Server granted access to a user
+# 6273: Network Policy Server denied access to a user
+# 6274: Network Policy Server discard the request for a user
+# 6275: Network Policy Server discard the accounting request for a user
+# 6276: Network Policy Server quarantined a user
+# 6277: Network Policy Server granted access to a user but put it on probation because the host did not meet the defined health policy
+# 6278: Network Policy Server granted full access to a user because the host met the defined health policy
+# 6279: Network Policy Server locked the user account due to repeated failed authentication attempts
+# 6280: Network Policy Server unlocked the user account
+# 4649: A replay attack was detected / MITRE TTP T1558 - Steal or Forge Kerberos Tickets 
+# 4825: A user was denied the access to Remote Desktop.  / MITRE TTP T1021.001 - Remote Desktop Protocol
+# 4672: Special privileges assigned to new logon / MITRE TTP T1078 - Valid accounts
+# 4868: The certificate manager denied a pending certificate request.
+# 4869: Certificate Services received a resubmitted certificate request.
+# 4870: Certificate Services revoked a certificate.
+# 4871: Certificate Services received a request to publish the certificate revocation list (CRL).
+# 4872: Certificate Services published the certificate revocation list (CRL).
+# 4873: A certificate request extension changed.
+# 4874: One or more certificate request attributes changed.
+# 4875: Certificate Services received a request to shut down.
+# 4876: Certificate Services backup started.
+# 4877: Certificate Services backup completed.
+# 4878: Certificate Services restore started.
+# 4879: Certificate Services restore completed.
+# 4880: Certificate Services started.
+# 4881: Certificate Services stopped.
+# 4882: The security permissions for Certificate Services changed.
+# 4883: Certificate Services retrieved an archived key.
+# 4884: Certificate Services imported a certificate into its database.
+# 4885: The audit filter for Certificate Services changed.
+# 4886: Certificate Services received a certificate request.
+# 4887: Certificate Services approved a certificate request and issued a certificate.
+# 4888: Certificate Services denied a certificate request.
+# 4889: Certificate Services set the status of a certificate request to pending.
+# 4890: The certificate manager settings for Certificate Services changed.
+# 4891: A configuration entry changed in Certificate Services.
+# 4892: A property of Certificate Services changed.
+# 4893: Certificate Services archived a key.
+# 4894: Certificate Services imported and archived a key.
+# 4895: Certificate Services published the CA certificate to Active Directory Domain Services.
+# 4896: One or more rows have been deleted from the certificate database.
+# 4897: Role separation enabled:
+# 4898: Certificate Services loaded a template.
+# 4899: A Certificate Services template was updated.
+# 4900: Certificate Services template security was updated.
+# 5120: OCSP Responder Service Started.
+# 5121: OCSP Responder Service Stopped.
+# 5122: A Configuration entry changed in the OCSP Responder Service.
+# 5123: A configuration entry changed in the OCSP Responder Service.
+# 5124: A security setting was updated on OCSP Responder Service.
+# 5125: A request was submitted to OCSP Responder Service.
+# 5126: Signing Certificate was automatically updated by the OCSP Responder Service.
+# 5127: The OCSP Revocation Provider successfully updated the revocation information.
+# 5140: !NOT COLLECTED PER DEFAULT! - A network share object was accessed / T1021.002 - SMB Windows Admin Shares
+# 5142: A network share object was added / T1021.002 - SMB Windows Admin Shares
+# 5143: A network share object was modified / T1222.001 - File and Directory Permissions Modification
+# 5144: A network share object was deleted / T1021.002 - SMB Windows Admin Shares
+# 5145: !NOT COLLECTED PER DEFAULT! - A network share object was checked to see whether client can be granted desired access / T1021.002 - SMB Windows Admin Shares
+# 4656: A handle to an object was requested
+# 4698: A scheduled task was created. / MITRE TTP T1053.005 - Scheduled Task
+# 4699: A scheduled task was deleted. / MITRE TTP T1053.005 - Scheduled Task
+# 4700: A scheduled task was enabled. / MITRE TTP T1053.005 - Scheduled Task
+# 4701: A scheduled task was disabled. / MITRE TTP T1053.005 - Scheduled Task
+# 4702: A scheduled task was updated. / MITRE TTP T1053.005 - Scheduled Task
+# 5148: The Windows Filtering Platform has detected a DoS attack and entered a defensive mode; packets associated with this attack will be discarded. / MITRE TTP T1498 - Network denial of service
+# 5149: The DoS attack has subsided and normal processing is being resumed. / MITRE TTP T1498 - Network denial of service
+# 4661: A handle to an object was requested / MITRE TTP T1003 - OS credential dumping
+# 4715: The audit policy (SACL) on an object was changed.
+# 4719: System audit policy was changed. / MITRE TTP T1562.002 - Impair Defenses: Disable Windows Event Logging 
+# 4817: Auditing settings on object were changed.
+# 4902: The Peruser audit policy table was created.
+# 4904: An attempt was made to register a security event source.
+# 4905: An attempt was made to unregister a security event source.
+# 4906: The CrashOnAuditFail value has changed. / MITRE TTP T1562.002 - Disable Windows Event Logging 
+# 4907: Auditing settings on object were changed.
+# 4908: Special Groups Logon table modified. / MITRE TTP T1562.002 - Impair Defenses: Disable Windows Event Logging 
+# 4912: Per User Audit Policy was changed.
+# 4706: A new trust was created to a domain. / MITRE TTP T1484.002 - Domain Policy Modification: Domain Trust Modification
+# 4707: A trust to a domain was removed. / MITRE TTP T1484.002 - Domain Policy Modification: Domain Trust Modification
+# 4716: Trusted domain information was modified. / MITRE TTP T1484.002 - Domain Policy Modification: Domain Trust Modification
+# 4713: Kerberos policy was changed. / MITRE TTP T1484 - Domain Policy Modification
+# 4717: System security access was granted to an account. / MITRE TTP T1134 - Access Token Manipulation 
+# 4718: System security access was removed from an account. / MITRE TTP T1134 - Access Token Manipulation 
+# 4739: Domain Policy was changed. / MITRE TTP T1484 - Domain Policy Modification
+# 4864: A namespace collision was detected.
+# 4865: A trusted forest information entry was added. / MITRE TTP T1484.002 - Domain Policy Modification: Domain Trust Modification
+# 4866: A trusted forest information entry was removed. / MITRE TTP T1484.002 - Domain Policy Modification: Domain Trust Modification
+# 4867: A trusted forest information entry was modified. / MITRE TTP T1484.002 - Domain Policy Modification: Domain Trust Modification
+# 4703: A user right was adjusted. / MITRE TTP T1134 - Access Token Manipulation 
+# 4704: A user right was assigned. / MITRE TTP T1134 - Access Token Manipulation 
+# 4705: A user right was removed. / MITRE TTP T1134 - Access Token Manipulation 
+# 4673: A privileged service was called
+# 4674: An operation was attempted on a privileged object
+# 4608: Windows is starting up.
+# 4609: Windows is shutting down.
+# 4616: The system time was changed. / MITRE TTP T1070.006 - Timestomp
+# 4621: Administrator recovered system from CrashOnAuditFail / MITRE TTP T1562.002 - Impair Defenses: Disable Windows Event Logging 
+# 4610: An authentication package has been loaded by the Local Security Authority. / MITRE TTP T1547.008 - Boot or Logon Autostart Execution: LSASS Driver 
+# 4611: A trusted logon process has been registered with the Local Security Authority. / MITRE TTP T1547.008 - Boot or Logon Autostart Execution: LSASS Driver 
+# 4614: A notification package has been loaded by the Security Account Manager.
+# 4622: A security package has been loaded by the Local Security Authority. / MITRE TTP T1547.008 - Boot or Logon Autostart Execution: LSASS Driver 
+# 4697: A service was installed in the system. / MITRE TTP T1543.003 - Create or Modify System ProcessWindows Service
+# 5038: Code integrity determined that the image hash of a file is not valid. The file could be corrupt due to unauthorized modification or the invalid hash could indicate a potential disk device error. / MITRE TTP T1036.001 Masquerading: Invalid Code Signature - 
+# 6281: Code Integrity determined that the page hashes of an image file are not valid. The file could be improperly signed without page hashes or corrupt due to unauthorized modification. The invalid hashes could indicate a potential disk device error. / MITRE TTP T1036.001 Masquerading: Invalid Code Signature - 
+# 6410: Code integrity determined that a file does not meet the security requirements to load into a process. / MITRE TTP T1036.001 Masquerading: Invalid Code Signature - 
+
+
+# ----------------------
+#    System channel 
+# ----------------------
+
+[WinEventLog://System]
+disabled = 0
+whitelist1 = SourceName=%(EventLog|Microsoft-Windows-Eventlog|Microsoft-Windows-Audit-CVE|Microsoft-Windows-DistributedCOM|Microsoft-Windows-GroupPolicy|Microsoft-Windows-Kernel-General|Microsoft-Windows-Kernel-PnP|Microsoft-Windows-Kernel-Power|Microsoft-Windows-Time-Service|Microsoft-Windows-WER-SystemErrorReporting|Microsoft-Windows-WindowsUpdateClient|Microsoft-Windows-Wininit|NETLOGON|Service Control Manager|User32)%
+# Provider: [EventLog] - ID 6005: Event log service was started
+# Provider: [EventLog] - ID 6006: Event log service was stopped / MITRE TTP T1562.002 - Disable Windows Event Logging
+# Provider: [EventLog] - ID 6008: Previous system shutdown was not planned / MITRE TTP T1529 - System Shutdown/Reboot
+# Provider: [EventLog] - ID 6013: System uptime is [seconds]
+# Provider: [Microsoft-Windows-Eventlog] - ID 104: [Event log] log cleared / MITRE TTP T1070.001 - Indicator Removal on Host
+# Provider: [Microsoft-Windows-Audit-CVE] - ID 1: Possible detection for [CVE] / MITRE TTP Threat/vulnerabilityalert - "
+# Provider: [Microsoft-Windows-DistributedCOM] - ID *: DCOM info / MITRE TTP T1021.003 - Remote Services: Distributed Component Object Model
+# Provider: [Microsoft-Windows-GroupPolicy] - ID *: Group policies application / MITRE TTP T1484.001 - Domain Policy Modification: Group Policy Modification
+# Provider: [Microsoft-Windows-Kernel-General] - ID The operating system started at system time [time]
+# Provider: [Microsoft-Windows-Kernel-General] - ID 13: The operating system is shutting down at system time [time] / MITRE TTP T1529 - System Shutdown/Reboot
+# Provider: [Microsoft-Windows-Kernel-PnP] - ID 219: Failed to load driver [driver] / MITRE TTP T1091 - Replication Through Removable Media
+# Provider: [Microsoft-Windows-Kernel-Power] - ID 41: The system has rebooted without cleaning shutting down first / MITRE TTP T1529 - System Shutdown/Reboot
+# Provider: [Microsoft-Windows-Kernel-Power] - ID 109: The kernel power manager has initiated a shutdown transition / MITRE TTP T1529 - System Shutdown/Reboot
+# Provider: [Microsoft-Windows-Time-Service] - ID *: Time change / MITRE TTP T1070.006 - Timestomp
+# Provider: [Microsoft-Windows-WER-SystemErrorReporting] - ID 1001: BSOD / MITRE TTP T1499.004 - Endpoint DoS: Application or System Exploitation
+# Provider: [Microsoft-Windows-WindowsUpdateClient] - ID Installation successful: [update package]
+# Provider: [Microsoft-Windows-Wininit] - ID 11: Custom dynamic link libraries are being loaded for every application / MITRE TTP T1546.010 - AppInit DLLs
+# Provider: [Microsoft-Windows-Wininit] - ID 12: LSA started as a protected process / MITRE TTP M1025 - Privileged Process Integrity
+# Provider: [Netlogon] - ID 5805: A machine account failed to authenticate / MITRE TTP T1078 - Valid accounts
+# Provider: [Netlogon] - ID 5827: The Netlogon service denied a vulnerable Netlogon secure channel connection from a machine account. / MITRE TTP T1078 - Valid accounts
+# Provider: [Netlogon] - ID 5828: The Netlogon service denied a vulnerable Netlogon secure channel connection using a trust account. / MITRE TTP T1078 - Valid accounts
+# Provider: [Netlogon] - ID 5829: The Netlogon service allowed a vulnerable Netlogon secure channel connection. / MITRE TTP T1078 - Valid accounts
+# Provider: [Netlogon] - ID 5830:  The Netlogon service allowed a vulnerable Netlogon secure channel connection because the machine account is allowed in the "Domain controller / MITRE TTP T1078 - Valid accounts
+# Provider: [Netlogon] - ID 5831: The Netlogon service allowed a vulnerable Netlogon secure channel connection because the trust account is allowed in the "Domain controller / MITRE TTP T1078 - Valid accounts
+# Provider: [Service Control Manager] - ID 7045: Service installation / MITRE TTP T1543.003 - Create or Modify System Process: Windows Service
+# Provider: [Service Control Manager] - ID *: Service installation (7045) change, disabled or crash / MITRE TTP T1499.004 - Endpoint DoS: Application or System Exploitation
+# Provider: [User32] - ID 1074: [process] has initiated the restart of [host] on behalf of [user] for the following [reason] / MITRE TTP T1529 - System Shutdown/Reboot
+# Provider: [User32] - ID 1076: Reason supplied by [user] for the last unexpected shutdown is: [reason] / MITRE TTP T1529 - System Shutdown/Reboot
+
+
+# ----------------------
+#  Application channel 
+# ----------------------
+
+[WinEventLog://Application]
+disabled = 0
+whitelist1 = SourceName=%Search-ProfileNotify% EventCode=%^1$%
+whitelist2 = SourceName=%ESENT% EventCode=%^(325|326|327)$%
+whitelist3 = SourceName=%MsiInstaller% EventCode=%^11707$%
+whitelist4 = SourceName=%(Application Error|Application Hang|Windows Error Reporting|Docker)%
+# ID 1: Search Service for [user] removed in response to user profile deletion / MITRE TTP T1070.004 - Indicator Removal on Host: File Deletion 
+# ID 325: The database engine created a new database / IFM / MITRE TTP T1003.033 - OS Credential Dumping: NTDS
+# ID 326: The database engine attached a new database / IFM / MITRE TTP T1003.033 - OS Credential Dumping: NTDS
+# ID 327: The database engine detached a database / IFM / MITRE TTP T1003.033 - OS Credential Dumping: NTDS
+# ID 11707: The [product] installation completed successfully. / MITRE TTP T1218.007 -  System Binary Proxy Execution: Msiexec
+# Provider: [Application Error] - ID 1000 / MITRE TTP T1499.004 - Endpoint DoS: Application or System Exploitation 
+# Provider: [Application Hang] - ID 1002 / MITRE TTP T1499.004 - Endpoint DoS: Application or System Exploitation 
+# Provider: [Windows Error Reporting] - ID 1001: BSOD / MITRE TTP T1499.004 - Endpoint DoS: Application or System Exploitation 
+# Provider: [Docker]
+
+
+# ------------------
+#  74 - SQL Server
+# ------------------
+
+whitelist7 = SourceName=%MSSQL\$.*% EventCode=%^(15457|17199|17200|17201|17202|17810|18401|18451|18453|18454|18455|18456|18461|18462|18463|18464|18465|18466|18467|18468|18470|18471|18486|18487|18488|28046|28047|28048|33205)$%
+# ID 15457: Configuration option changed / MITRE TTP T1505.001 -  Server Software Component 
+# ID 17199: DAC is disabled / MITRE TTP T1505.001 -  Server Software Component 
+# ID 17200: DAC settings changed / MITRE TTP T1505.001 -  Server Software Component 
+# ID 17201: DAC mode enabled to listen on / MITRE TTP T1505.001 -  Server Software Component 
+# ID 17202: DAC connection established / MITRE TTP T1505.001 -  Server Software Component 
+# ID 17810: DAC max connections reached / MITRE TTP T1505.001 -  Server Software Component 
+# ID 18xxx: Failed login / MITRE TTP T1110 - Brutforce
+# ID 280xx: Failed login  / MITRE TTP T1110 - Brutforce
+# ID 18453: Success login with Windows authentication / MITRE TTP T1078 - Valid accounts
+# ID 18454: Success login with SQL Server authentication / MITRE TTP T1079 - Valid accounts
+# ID 18455: Success login (no more information) / MITRE TTP T1080 - Valid accounts
+# ID 28046: Success login / MITRE TTP T1081 - Valid accounts
+# ID 33205: SQL Server transactions / MITRE TTP T1505.001 -  Server Software Component 
+
+
+# ------------------
+#  40 - PowerShell
+# ------------------
+
+# PowerShell classic (not collected, too noisy)
+[WinEventLog://Windows PowerShell]
+disabled = 0
+whitelist = 800
+# whitelist1 = 600
+index = cdc_os_windows_powershell
+# ID 600:  / MITRE TTP T1059.001 - Command and Scripting Interpreter: PowerShell
+# ID 800:  / MITRE TTP T1059.001 - Command and Scripting Interpreter: PowerShell
+
+# PowerShell modern
+[WinEventLog://Microsoft-Windows-PowerShell/Operational]
+disabled = 0
+whitelist = 4103, 4104
+blacklist1 = EventCode=%^4103$% Message=%Host Application = (\w:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost\.exe -Embedding|.*?\\SplunkUniversalForwarder\\bin\\splunk-powershell\.ps1)%
+index = cdc_os_windows_powershell
+# ID 4103: Module logging / MITRE TTP T1059.001 - Command and Scripting Interpreter: PowerShell
+# ID 4104: Script block   / MITRE TTP T1059.001 - Command and Scripting Interpreter: PowerShell
+
+# PowerShell Core (v6 or higher)
+[WinEventLog://PowerShellCore/Operational]
+disabled = 0
+whitelist = 4103, 4104
+index = cdc_os_windows_powershell
+# ID 4103: Module logging / MITRE TTP T1059.001 - Command and Scripting Interpreter: PowerShell
+# ID 4104: Script block   / MITRE TTP T1059.001 - Command and Scripting Interpreter: PowerShell
+
+
+# -----------------------
+#    62 - DNS Server
+# -----------------------
+
+[WinEventLog://DNS Server]
+disabled = 0
+whitelist = 150,770,6004
+# ID 150: DNS Server could not load or initialize the plug-in DLL / MITRE TTP T1574.002 - Hijack Execution Flow: DLL Side Loading
+# ID 770: DNS Server plugin DLL has been loaded / MITRE TTP T1574.002 - Hijack Execution Flow: DLL Side Loading
+# ID 6004: The DNS server received a zone transfer request from %1 for a non-existent or non-authoritative zone %2. / MITRE TTP T1071.004 - Application Layer Protocol: DNS
+
+[WinEventLog://Microsoft-Windows-DNSServer/Audit]
+disabled = 0
+whitelist = 512, 513, 514, 515, 516, 517, 518, 522, 523, 537, 540, 541, 542, 543, 548, 549, 550, 551, 555, 556, 557, 565, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582
+# 512 - Zone operations : The zone test was created with settings: Type=Primary; Lookup=Forward; ReplicationScope=Domain; ZoneFile=NULL.
+# 513 - Zone operations : The zone %1 was deleted.
+# 514 - Zone operations : The zone demo.lan was updated. The AllowUpdate setting has been set to Nonsecure and secure.
+# 515 - Zone operations : A resource record of type %1, name %2, TTL %3 and RDATA %5 was created in scope %7 of zone %6.
+# 516 - Zone operations : A resource record of type %1, name %2 and RDATA %5 was deleted from scope %7 of zone %6.
+# 517 - Zone operations : All resource records of type %1, name %2 were deleted from scope %4 of zone %3.
+# 518 - Zone operations : All resource records at Node name %1 were deleted from scope %3 of zone %2.
+# 522 - Zone operations : The scope %1 was created in zone %2.
+# 523 - Zone operations : The scope %1 was deleted in zone %2.
+# 537 - Configuration : The forwarder list on scope %2 has been reset to %1.
+# 540 - Configuration : The root hints have been modified.
+# 541 - Configuration : The setting %1 on scope %2 has been set to %3.
+# 542 - Configuration : The scope %1 of DNS server was created.
+# 543 - Configuration : The scope %1 of DNS server was deleted.
+# 548 - Server operations : A request to restart the DNS server service has been received.
+# 549 - Server operations : The debug logs have been cleared from %1 on DNS server.
+# 550 - Server operations : The in-memory contents of all the zones on DNS server have been flushed to their respective files.
+# 551 - Server operations : All the statistical data for the DNS server has been cleared.
+# 555 - Server operations : The DNS server has been prepared for demotion by removing references to it from all zones stored in the Active Directory.
+# 556 - Server operations : The information about the root hints on the DNS server has been written back to the persistent storage.
+# 557 - Server operations : The addresses on which DNS server will listen has been changed to %1.
+# 565 - Zone operations : The content of the zone %1 has been written to the disk and the notification has been sent to all the notify servers.
+# 573 - Zone operations : A delegation for %1 in the scope %2 of zone %3 with the name server %4 has been added.
+# 574 - Policy operations : The client subnet record with name %1 value %2 has been added to the client subnet map.
+# 575 - Policy operations : The client subnet record with name %1 has been deleted from the client subnet map.
+# 576 - Policy operations : The client subnet record with name %1 has been updated from the client subnet map. The new client subnets that it refers to are %2.
+# 577 - Policy operations : A server level policy %6 for %1 has been created on server %2 with following properties: ProcessingOrder:%3; Criteria:%4; Action:%5.
+# 578 - Policy operations : A zone level policy %8 for %1 has been created on zone %6 on server %2 with following properties: ProcessingOrder:%3; Criteria:%4; Action:%5; Scopes:%7.
+# 579 - Policy operations : A forwarding policy %6 has been created on server %2 with following properties: ProcessingOrder:%3; Criteria:%4; Action:%5; Scope:%1.
+# 580 - Policy operations : The server level policy %1 has been deleted from server %2.
+# 581 - Policy operations : The zone level policy %1 has been deleted from zone %3 on server %2.
+# 582 - Policy operations : The forwarding policy %1 has been deleted from server %2.
+
+
+# ---------------------------
+#    71 - Exchange Server
+# ---------------------------
+
+[WinEventLog://MSExchange Management]
+disabled = 0
+whitelist = 1, 6
+# ID 1: Success command operation / MITRE TTP T1505.002 - Server Software Component: Transport Agent 
+# ID 6: Failed command operation / MITRE TTP T1505.002 - Server Software Component: Transport Agent 
+
+
+# --------------------------
+#   60 - DC authentication
+# --------------------------
+
+[WinEventLog://Microsoft-Windows-Authentication/AuthenticationPolicyFailures-DomainController]
+disabled = 0
+whitelist = 101,105,106,305,306
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# ID 101: An NTLM sign-in failure occurs because the authentication policy is configured. / MITRE TTP T1078 - Valid accounts
+# ID 105: A Kerberos restriction failure occurs because the authentication from a particular device was not permitted. / MITRE TTP T1078 - Valid accounts
+# ID 106: A Kerberos restriction failure occurs because the user or device was not allowed to authenticate to the server. / MITRE TTP T1078 - Valid accounts
+# ID 305: Potential Kerberos restriction failure might occur because the authentication from a particular device was not permitted. / MITRE TTP T1078 - Valid accounts
+# ID 306: A Kerberos restriction failure might occur because the user or device was not allowed to authenticate to the server. / MITRE TTP T1078 - Valid accounts
+
+[WinEventLog://Microsoft-Windows-Authentication/ProtectedUser-Client]
+disabled = 0
+whitelist = 104,304
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# ID 104: The security package on the client does not contain the credentials.
+# ID 304: The security package does not store the Protected User's credentials.
+
+[WinEventLog://Microsoft-Windows-Authentication/ProtectedUserFailures-DomainController]
+disabled = 0
+whitelist = 100,104
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# ID 100: An NTLM sign-in failure occurs for an account that is in the Protected Users security group. / MITRE TTP T1110 - Brutforce
+# ID 104: DES or RC4 encryption types are used for Kerberos authentication and a sign-in failure occurs for a user in the Protected User security group. / MITRE TTP T1558 - Steal or Forge Kerberos Tickets
+
+[WinEventLog://Microsoft-Windows-Authentication/ProtectedUserSuccesses-DomainController]
+disabled = 0
+whitelist = 303
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# ID 303: A Kerberos ticket-granting-ticket (TGT) was successfully issued for a member of the Protected User group. / MITRE TTP N/A -
+
+[WinEventLog://Directory Service]
+disabled = 0
+whitelist = 1138,1174,1644,2946,2947
+# ID 1138: LDAP debug: Function ldap_search entered (requires manual registry activation)
+# ID 1174: LDAP debug: Wrong password (requires manual registry activation
+# ID 1644: LDAP debug: A client issued a search operation with the following options (requires manual registry activation
+# ID 2946: Call successfully fetched the password of a gMSA account / MITRE TTP T1003 - OS Credential Dumping 
+# ID 2947: Call failed fetched the password of a gMSA account / MITRE TTP T1003 - OS Credential Dumping 
+
+
+# --------------------------
+#   50 - Authentication
+# --------------------------
+
+[WinEventLog://Microsoft-Windows-NTLM/Operational]
+disabled = 0
+whitelist1 = 8004
+#whitelist2 = 8001,8002,8003
+# ID 8001: NTLM client blocked audit: Audit outgoing NTLM authentication traffic that would be blocked.  / MITRE TTP T1078 - Valid accounts
+# ID 8002: NTLM traffic that would be blocked / MITRE TTP T1078 - Valid accounts
+# ID 8003: NTLM server blocked in the domain audit: Audit NTLM authentication in this domain  / MITRE TTP T1078 - Valid accounts
+# ID 8004: Domain Controller Blocked Audit: Audit NTLM authentication to this domain controller.  / MITRE TTP T1078 - Valid accounts
+
+
+# -------------------------------
+#  11.1 - Remote management: RDP
+# -------------------------------
+
+[WinEventLog://Microsoft-Windows-RemoteDesktopServices-RdpCoreTS/Operational]
+disabled = 0
+whitelist = 104,131,140,168,169
+# ID 104: Client timezone is [1] hour from UTC / MITRE TTP T1021.001 - Remote services: RDP
+# ID 131: The server accepted a new UDP/TCP connection from client [IP]:PORT / MITRE TTP T1021.001 - Remote services: RDP
+# ID 140: Connection failed; bad username or password / MITRE TTP T1021.001 - Remote services: RDP
+# ID 168: The resolution requested by the client: Monitor 1: [X x Y] / MITRE TTP T1021.001 - Remote services: RDP
+# ID 169: The client operating system type is (1, 3) > Server [SERVER] / MITRE TTP T1021.001 - Remote services: RDP
+
+[WinEventLog://Microsoft-Windows-TerminalServices-LocalSessionManager/Operational]
+disabled = 0
+whitelist = 21,25
+# ID 21: Session logon succeeded / MITRE TTP T1021.001 - Remote services: RDP
+# ID 25: Session reconnection succeeded / MITRE TTP T1021.001 - Remote services: RDP
+
+[WinEventLog://Microsoft-Windows-TerminalServices-RDPClient/Operational]
+disabled = 0
+whitelist = 1024,1029
+# ID 1024: RDP ClientActiveX is trying to connect to the server [SERVERX] / MITRE TTP T1021.001 - Remote services: RDP
+# ID 1029: Base64(SHA1(UserName)) / MITRE TTP T1021.001 - Remote services: RDP
+
+[WinEventLog://Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational]
+disabled = 0
+whitelist = 1149,20503,20504,20508
+# ID 1149: User authentication succeeded / MITRE TTP T1021.001 - Remote services: RDP
+# ID 20503: Shadow View Session Started / MITRE TTP T1021.001 - Remote services: RDP
+# ID 20504: Shadow View Session Stopped / MITRE TTP T1021.001 - Remote services: RDP
+# ID 20508: Shadow View permission granted / MITRE TTP T1021.001 - Remote services: RDP
+
+
+# ------------------------------------
+#  11.2 - Remote management: SSH/WinRM
+# ------------------------------------
+
+[WinEventLog://Microsoft-Windows-WinRM/Operational]
+disabled = 0
+whitelist = 91,169
+# ID 91: WinRM session creation / MITRE TTP T1021.006 - Remote Services: WinRM
+# ID 169: User [user]: got authenticated using [auth] / MITRE TTP T1021.006 - Remote Services: WinRM
+
+[WinEventLog://OpenSSH/Operational]
+disabled = 0
+whitelist = 4
+# ID 4: sshd: [message] / MITRE TTP T1021.004 - Remote services: SSH
+
+
+# ------------------
+#    32 - Printer
+# ------------------
+
+[WinEventLog://Microsoft-Windows-PrintService/Admin]
+disabled = 0
+whitelist = 354,808,823
+# ID 354: Initialize printer X with driver [DLL] / MITRE TTP T1574.002 - Hijack Execution Flow: DLL Side Loading
+# ID 808: Initialize printer X with driver [DLL] / MITRE TTP T1574.002 - Hijack Execution Flow: DLL Side Loading
+# ID 823: Changing default printer / MITRE TTP T1574.002 - Hijack Execution Flow: DLL Side Loading
+
+[WinEventLog://Microsoft-Windows-PrintService/Operational]
+disabled = 0
+whitelist = 848,849
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# ID 848: Printer share created / MITRE TTP T1574.002 - Hijack Execution Flow: DLL Side Loading
+# ID 849: Printer share canceled / MITRE TTP T1574.002 - Hijack Execution Flow: DLL Side Loading
+
+
+# ----------------------------
+#   21 - Software & updates
+# ----------------------------
+
+[WinEventLog://Microsoft-Windows-Application-Experience/Program-Compatibility-Assistant]
+disabled = 0
+whitelist = 17
+# ID 17: Program Compatibility Assistant execution / MITRE TTP T1202 - Indirect Command Execution
+
+[WinEventLog://Microsoft-Windows-Application-Experience/Program-Inventory]
+disabled = 0
+whitelist = 903,904,907,908
+# ID 903: Program installed on the system / MITRE TTP T0843 - Program install
+# ID 904: Program installed on the system / MITRE TTP T0843 - Program install
+# ID 907: Program removed from the system
+# ID 908: Program removed from the system
+
+[WinEventLog://Microsoft-Windows-Application-Experience/Program-Telemetry]
+disabled = 0
+whitelist = 500
+# ID 500: Compatibility fix applied to [path.exe] / MITRE TTP T1546.011 -  Event Triggered Execution: Application Shimming
+
+[WinEventLog://Microsoft-Windows-Shell-Core/AppDefaults]
+disabled = 0
+whitelist = 62443
+# ID 62443: Default application changes / MITRE TTP T1546.001 -  Event Triggered Execution: Change Default File Association
+
+[WinEventLog://OAlerts]
+disabled = 0
+whitelist = 300
+# ID 300: Provides info. about opened files, brutforce, DDE attacks
+
+[WinEventLog://Microsoft-Windows-WindowsUpdateClient/Operational]
+disabled = 0
+whitelist = 41
+# ID 41: An update was downloaded: <title, KB, GUID, revision number>
+
+[WinEventLog://Setup]
+disabled = 0
+whitelist1 = SourceName=%Microsoft-Windows-Servicing% EventCode=%^(2|4|7|8|9|10|13|14)$%
+# ID 2: Package [KBx] was successfully changed to the Installed state.
+# ID 4: A reboot is necessary before package [KBx] can be changed to the Installed state. / MITRE TTP T1562.001 - Impair Defenses: Disable or Modify Tools 
+# ID 7: Initiating changes to turn on update [feature/update] of package Microsoft-Windows-Lxss-Optional. 
+# ID 8: Initiating changes to turn off update [feature/update] of package Microsoft-Windows-Lxss-Optional.  / MITRE TTP T1562.001 - Impair Defenses: Disable or Modify Tools 
+# ID 9: Selectable update [update] of package [package] was successfully turned on.
+# ID 10: Selectable update [module/feature] was successfully turned off. / MITRE TTP T1562.001 - Impair Defenses: Disable or Modify Tools 
+# ID 13: A reboot is necessary before the selectable update[update] of package [feature] can be turned on.
+# ID 14: A reboot is necessary before the selectable update[update] of package [feature] can be turned off. / MITRE TTP T1562.001 - Impair Defenses: Disable or Modify Tools 
+
+
+# ------------------------
+#  31 - System security
+# ------------------------
+
+[WinEventLog://Microsoft-Windows-AppLocker/EXE and DLL]
+disabled = 0
+whitelist = 8002,8003,8004
+# ID 8002: [path] was allowed to run / MITRE TTP M1038 - Execution Prevention
+# ID 8003: [path] was prevented from running  / MITRE TTP M1038 - Execution Prevention
+# ID 8004: [path] was not allowed to run. / MITRE TTP M1038 - Execution Prevention
+
+[WinEventLog://Microsoft-Windows-AppLocker/MSI and Script]
+disabled = 0
+whitelist = 8005,8006,8007
+# ID 8005: [path] was allowed to run / MITRE TTP M1038 - Execution Prevention
+# ID 8006: [path] was prevented from running  / MITRE TTP M1038 - Execution Prevention
+# ID 8007: [path] was not allowed to run. / MITRE TTP M1038 - Execution Prevention
+
+[WinEventLog://Microsoft-Windows-CAPI2/Operational]
+disabled = 0
+whitelist = 11,30,70,81
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# ID 11: Certificate build chain / MITRE TTP T1553.004 - Subvert Trust Controls: Install Root Certificate
+# ID 30: Verify certificate chain policy / MITRE TTP T1553.004 - Subvert Trust Controls: Install Root Certificate
+# ID 70: Acquire certificate private key / MITRE TTP T1552.004 - Unsecured Credentials-Private Keys
+# ID 81: Verify certificate trust / MITRE TTP T1553.004 - Subvert Trust Controls: Install Root Certificate
+
+[WinEventLog://Microsoft-Windows-CodeIntegrity/Operational]
+disabled = 0
+whitelist = 3001,3002,3003,3004,3033,3063,3065,3066
+# ID 3001: Unsigned drivers loaded on the system / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+# ID 3002: Code Integrity is unable to verify the image integrity of the [FILE] because the set of per-page image hashes could not be found / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+# ID 3003: Unable to verify the image integrity of the [file] because the set of per-page image hashes could not be found on the system. The image is allowed to load because kernel mode debugger is attached / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+# ID 3004: Windows is unable to verify the image integrity of the [file] because file hash could not be found on the system. / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+# ID 3033: Code Integrity determined that [process] attempted to load [FILE] that did not meet the signing level requirements / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+# ID 3063: Code Integrity determined that [process] attempted to load [FILE] that did not meet the signing level requirements / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+# ID 3065: Code Integrity determined that [process] attempted to load [FILE] that did not meet the signing level requirements / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+# ID 3066: Code Integrity determined that [process] attempted to load [FILE] that did not meet the signing level requirements / MITRE TTP T1036.001 -  Masquerading: Invalid Code Signature
+
+[WinEventLog://Microsoft-Windows-Windows Defender/Operational]
+disabled = 0
+whitelist = 1013,1014,1116,1117,1118,1119,5007
+# ID 1013: Malware history deletion / MITRE TTP T1070.003 -  Indicator Removal on Host: Clear Command History
+# ID 1014: Malware history deletion failure / MITRE TTP T1070.003 -  Indicator Removal on Host: Clear Command History
+# ID 5007: Configuration changed (reports exclusions) / MITRE TTP T1562.001 - Impair Defenses: Disable or Modify Tools
+# ID 1116: Threat detected (no action taken yet)
+# ID 1117: Threat detected (action taken with success)
+# ID 1118: Threat detected (action taken failed)
+# ID 1119: Threat detected (action taken critically failed)
+
+[WinEventLog://Microsoft-Windows-BitLocker/BitLocker Management]
+disabled = 0
+whitelist = 768, 775, 793, 796, 817, 840, 
+# ID 768: BitLocker encryption was started for volume C: using XTS-AES 128 algorithm. / MITRE TTP T1486 - Data Encrypted for Impact 
+# ID 775: A BitLocker key protector was created.
+# ID 793: BitLocker resealed boot settings to the TPM for volume C: 
+# ID 796: BitLocker Drive Encryption is using software-based encryption to protect volume C:. / MITRE TTP T1486 - Data Encrypted for Impact 
+# ID 817: BitLocker successfully sealed a key to the TPM.
+# ID 840: A trusted WIM file has been added for volume C: 
+
+[WinEventLog://Microsoft-Windows-Security-Mitigations/KernelMode]
+disabled = 0
+whitelist = 3,10,12
+# ID 3: Process [PROCESS] would have been blocked from creating a child process [CHILD PROCESS] with command line [COMMAND]. / MITRE TTP T1553.003 - Subvert Trust Controls: Code Signing 
+# ID 10: Process [PROCESS] was blocked from making system calls to [DRIVER]. / MITRE TTP T1553.002 - Subvert Trust Controls: Code Signing 
+# ID 12: [process] was blocked from loading non Microsoft binary [DLL] / MITRE TTP T1553.002 - Subvert Trust Controls: Code Signing
+
+[WinEventLog://Microsoft-Windows-Security-Mitigations/UserMode]
+disabled = 0
+# Everything
+
+[WinEventLog://Microsoft-Windows-Crypto-NCrypt/Operational]
+disabled = 1
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+
+
+# ------------------------
+#    Removable storage
+# ------------------------
+
+[WinEventLog://Microsoft-Windows-Kernel-PnP/Configuration]
+disabled = 0
+whitelist = 400,401,410
+# ID 400: Device [path] was configured / MITRE TTP T1091 - Replication Through Removable Media
+# ID 401: Device [path] failed to be configured / MITRE TTP T1091 - Replication Through Removable Media
+# ID 410: Device [path] was initiated / MITRE TTP T1091 - Replication Through Removable Media
+
+[WinEventLog://Microsoft-Windows-DriverFrameworks-UserMode/Operational]
+disabled = 0
+whitelist = 1003,1008
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# ID 1003: USB media connected / MITRE TTP T1091 - Replication Through Removable Media
+# ID 1008: USB media disconnected / MITRE TTP T1091 - Replication Through Removable Media
+
+[WinEventLog://Microsoft-Windows-VHDMP-Operational]
+disabled = 0
+whitelist = 1,2,12
+# ID 1: ISO/VHD file online / MITRE TTP T1553.055 -  Subvert Trust Controls: Mark-of-the-Web Bypass
+# ID 2: ISO/VHD file mounted / MITRE TTP T1553.055 -  Subvert Trust Controls: Mark-of-the-Web Bypass
+# ID 12: Handle for virtual disk [*.iso] created successfully / MITRE TTP T1553.055 -  Subvert Trust Controls: Mark-of-the-Web Bypass
+
+[WinEventLog://Microsoft-Windows-Partition/Diagnostic]
+disabled = 0
+whitelist = 1006
+# ID 1006: Disk/device informations / MITRE TTP T1091 - Replication Through Removable Media
+
+
+# ----------------------------
+#   10.1 - Network (generic)
+# ----------------------------
+
+
+[WinEventLog://Microsoft-Windows-Windows Firewall With Advanced Security/Firewall]
+disabled = 0
+whitelist = 2002,2003,2004,2005,2006
+# ID 2002: Settings changed in profile X / MITRE TTP T1562.004 -  Impair Defenses: Disable or Modify System Firewall
+# ID 2003: Settings changed in profile X / MITRE TTP T1562.004 -  Impair Defenses: Disable or Modify System Firewall
+# ID 2004: Rule created / MITRE TTP T1562.004 -  Impair Defenses: Disable or Modify System Firewall
+# ID 2005: Rule modified / MITRE TTP T1562.004 -  Impair Defenses: Disable or Modify System Firewall
+# ID 2006: Rule deleted / MITRE TTP T1562.004 -  Impair Defenses: Disable or Modify System Firewall
+
+[WinEventLog://Microsoft-Windows-WinINet-Config/ProxyConfigChanged]
+disabled = 0
+whitelist = 5600
+# ID 5600: Proxy configuration obtained [Proxy URL] / MITRE TTP T1090 - Proxy
+
+[WinEventLog://Microsoft-Windows-Winsock-WS2HELP/Operational]
+disabled = 0
+whitelist = 1,2,3,4
+# ID 1: Protocol entry added to Winsock catalog / MITRE TTP T1106 - Native API
+# ID 2: Protocol entry removed from Winsock catalog / MITRE TTP T1106 - Native API
+# ID 3: Protocol entry disabled from Winsock catalog / MITRE TTP T1106 - Native API
+# ID 4: Winsock catalog was reseted / MITRE TTP T1106 - Native API
+
+[WinEventLog://Microsoft-Windows-Wired-AutoConfig/Operational]
+disabled = 0
+whitelist = 15510
+# ID 15510: A network adapter was added to the system
+
+[WinEventLog://Microsoft-Windows-Bits-Client/Operational]
+disabled = 0
+whitelist = 3,4,59,60
+# ID 3: BITS created a task / MITRE TTP T119 - BITS job
+# ID 4: BITS transfer completed / MITRE TTP T119 - BITS job
+# ID 59: BITS transfer job started with URL [URL] / MITRE TTP T119 - BITS job
+# ID 60: BITS transfer job stopped with URL [URL] / MITRE TTP T119 - BITS job
+
+[WinEventLog://Microsoft-Windows-NetworkProfile/Operational]
+disabled = 0
+whitelist = 10000
+# ID 10000: Network connected to domain [domain]
+
+
+# ----------------------------
+#   10.2 - Network (SMB)
+# ----------------------------
+
+[WinEventLog://Microsoft-Windows-SMBServer/Operational]
+disabled = 1
+whitelist = 1001
+# ID 1001: Client attempt to use SMBv1 (prefer ID 3000) / MITRE TTP T1562.010 - Impair Defenses: Downgrade Attack 
+# Prefer ID 3000, but requires manual activation via PowerShell
+
+[WinEventLog://Microsoft-Windows-SMBServer/Audit]
+disabled = 1
+whitelist = 3000
+# ID 3000: Client attempt to use SMBv1 (PowerShell command) / MITRE TTP T1562.010 - Impair Defenses: Downgrade Attack 
+# Requires manual activation via PowerShell
+
+[WinEventLog://Microsoft-Windows-SMBClient/Security]
+disabled = 0
+whitelist = 31010,31017,31018,32000
+# ID 31010: A process has requested access to an object, but has not been granted those access rights.
+# ID 31017: Rejected an insecure guest logon.   / MITRE TTP T1078.001 -  Valid Accounts: Default Accounts
+# ID 31018: This event indicates that an administrator has enabled insecure guest. The AllowInsecureGuestAuth registry value is not configured with default settings. / MITRE TTP T1562.010 - Impair Defenses: Downgrade Attack 
+# ID 32000: SMB1 negotiate response received from a remote device when SMB1 cannot be negotiated by the local computer. / MITRE TTP T1562.010 - Impair Defenses: Downgrade Attack 
+
+[WinEventLog://Microsoft-Windows-SMBClient/Operational]
+disabled = 1
+whitelist = 30622, 30624
+# ID 30622: Unknown description or description not found
+# ID 30624: Unknown description or description not found
+
+
+# -----------------------
+#     100 - SYSMON
+# -----------------------
+
+[WinEventLog://Microsoft-Windows-Sysmon/Operational]
+disabled = 0
+
+
+# -------------------------
+#    22 - Task & Service
+# -------------------------
+
+[WinEventLog://Microsoft-Windows-TaskScheduler/Operational]
+disabled = 0
+whitelist = 106
+# ID 106: Task creation (lacking of info) / MITRE TTP T1053.005 - Schedule task
+
+
+# -------------------------
+#  20 - System activity
+# -------------------------
+
+[WinEventLog://Microsoft-Windows-WMI-Activity/Operational]
+disabled = 0
+whitelist = 5860,5861
+# ID 5860: Registration of Temporary Event Consumer / MITRE TTP T1546.003 -  Event Triggered Execution: WMI Event Subscription
+# ID 5861: Registration of Permanent Event Consumer / MITRE TTP T1546.003 -  Event Triggered Execution: WMI Event Subscription
+
+[WinEventLog://Microsoft-Windows-Forwarding/Operational]
+disabled = 0
+# Channel is feeded only if event forwarding is in place
+
+[WinEventLog://Microsoft-Windows-EventCollector/Operational]
+disabled = 0
+# Channel is feeded only if the server is acting as an event collector 
+
+[WinEventLog://Microsoft-Windows-GroupPolicy/Operational]
+disabled = 1
+
+
+# -----------------------
+#   70 - IIS webserver
+# -----------------------
+
+[WinEventLog://Microsoft-IIS-Configuration/Operational]
+disabled = 1
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+
+[WinEventLog://Microsoft-IIS-Configuration/Administrative]
+disabled = 1
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+
+
+# -----------------------
+#    75 - ADFS Server
+# -----------------------
+
+[WinEventLog://AD FS/Admin]
+disabled = 1
+
+[WinEventLog://DRS/Admin]
+disabled = 1
+
+# -----------------------
+#    76 - DHCP Server
+# -----------------------
+
+[WinEventLog://DhcpAdminEvents]
+disabled = 1
+# Visible as Microsoft-Windows-DHCP Server Events/Admin
+
+[WinEventLog://Microsoft-Windows-Dhcp-Server/Operational]
+disabled = 1
+
+[WinEventLog://Microsoft-Windows-DhcpNap/Operational]
+disabled = 1
+
+
+# -------------------------------------------------------------------------------
+#   78-Remote Access Services (RAS) / Direct Access / Always On VPN (AOVPN) 
+# -------------------------------------------------------------------------------
+
+[WinEventLog://Microsoft-Windows-Base-Filtering-Engine-Connections/Operational]
+disabled = 1
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+
+[WinEventLog://Microsoft-Windows-Base-Filtering-Engine-Resource-Flows/Operational]
+disabled = 1
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+
+[WinEventLog://Microsoft-Windows-Iphlpsvc]
+disabled = 1
+
+[WinEventLog://Microsoft-Windows-WinNat/Oper]
+disabled = 1
+# !!! EVENT LOG FILE DISABLED PER DEFAULT !!!
+# 'Oper' is really truncated on the channel name
+
+
+# -------------------------------------
+#  80 - Virtualization / Containers
+# -------------------------------------
+
+[WinEventLog://Microsoft-Windows-Containers-Wcifs/Operational]
+disabled = 1
+
+[WinEventLog://Microsoft-Windows-Containers-Wnifs/Operational]
+disabled = 1
+
+[WinEventLog://Microsoft-Windows-Hyper-V-Compute-Admin]
+disabled = 1
+
+[WinEventLog://Microsoft-Windows-Hyper-V-Compute-Operational]
+disabled = 1
