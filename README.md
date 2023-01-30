@@ -4,11 +4,11 @@
 **Splunk-input-windows-baseline** provides a unique `input.conf` configuration file that enables Windows advanced log collection using the *Splunk Universal Forwarder* agent. 
 
 # Project features
-Conversely to a lot of online resources, this configuration does not stick only to the `Security` event log and does not follow Microsoft [very generic policies](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations). Indeed, it was designed with a precise approach to collect only what is relevant in regards of detection, incident response and forensic purposes. Besides others things, it provides the following **special features**:
-* **Instant deployment** on any host, independently of its type or role: *domain controller, server or workstation*. This allows to not miss any event in case a specific role or feature is activated on a host and at the same time to simplify maintenance operations.
-* **Description for each event ID** together with its **MITRE ATT&CK** reference (when applicable).
-* **Allow list approach**: only known and necessary event IDs are collected to limit license impact
-* Coverage for more than **70 native event logs** (`Security, RDP, BitLocker, AppLocker, PowerShell, WinRM, Defender, Printer, NTLM, VHD, Firewall, OpenSSH, SYSMON, Scheduled tasks`).
+Conversely to a lot of online resources, this configuration does not stick only to the `Security` event log and does not follow Microsoft [very generic policies](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations). Indeed, it was designed with a precise approach to collect only what is relevant in regards of **detection, incident response and forensic** purposes. Besides others things, it provides the following **special features**:
+* **Instant deployment** on any server, independently of its type or role. This allows to not miss any event in case a specific role or feature is activated and at the same time to simplify maintenance operations. For workstations, some minor adjustments may need to be performed depending on your environment.
+* **Allow list approach**: only known and necessary event IDs are collected to limit license impact.
+* **Description** for each event ID together with its **MITRE ATT&CK** mapping (when applicable).
+* Coverage for more than **70 native event logs** (including `Security, RDP, BitLocker, AppLocker, PowerShell, WinRM, Defender, Printer, NTLM, VHD, Firewall, OpenSSH, SYSMON, Scheduled tasks`).
 * Coverage for more than **10 server roles or applications** (including `ADDS/Active Directory, ADCS/PKI, ADCS/OCSP, Exchange, SQL Server, DNS server, DHCP server, Hyper-V, ADFS, IIS web server, Docker, NPS Radius, AOVPN`).
 * **Usability** of collected events within my [SIGMA detection rules](https://github.com/mdecrevoisier/SIGMA-detection-rules).
 * Native **DFIR capacities** in regards of *RDP usage, proxy and network configuration changes, Microsoft Office security alerts, Windows updates, MSI packages execution, activation or deactivation of Windows features, VHD disk mount, private key access, group policy updates, time service, firewall configuration change, default file association change, connected networks, LDAP queries ...*
@@ -18,24 +18,27 @@ The configuration file can be applied on any Windows host (Vista or higher) wher
 
 ## Configuration file remarks
 * Specific input configuration related to Splunk stack (`format, sourcetype, index, evt_resolve_ad_obj, start_from ...`) has to be done by your operations team.
-* Some inputs are currently set to `disabled = 1`. This is due to a lack of documentation, time, testing or just not found documentation. Once reliable information will be obtained, I will update the configuration. Improvements or suggestions are welcome!
-* Some inputs are mark with `!!! EVENT LOG FILE DISABLED PER DEFAULT !!!`. This means that the event log is disabled per default and needs to be activated. This can be done manually or per GPO following the instructions from my project [Windows auditing baseline](https://github.com/mdecrevoisier/Windows-auditing-baseline).
-* REGEX are built using the `renderXml = true` option. If you disabled it, they will stop working.
-* A unique identifier is provided close to each category (except for the `Security` event log). This should allow you to easily retrieve more information about the event log or event ID in my [Windows mindmaps](https://github.com/mdecrevoisier/Microsoft-eventlog-mindmap) or [Windows auditing baseline](https://github.com/mdecrevoisier/Windows-auditing-baseline) projects.
+* Some stanzas are currently set to `disabled = 1`. This is due to a lack of documentation, time, testing or just not found documentation. Once reliable information will be obtained, I will update the configuration. Improvements or suggestions are welcome!
+* Some stanzas are marked with `!!! EVENT LOG FILE DISABLED PER DEFAULT !!!`. This means that the event log is disabled per default and needs to be activated. This can be done manually or per GPO following the instructions from my project [Windows auditing baseline](https://github.com/mdecrevoisier/Windows-auditing-baseline).
+* Whitelists and blacklists are built using the `renderXml = true` option. If you disabled it, they will stop working.
+* A unique identifier is provided next to each category (except for the `Security` event log). This should allow you to easily retrieve more information about the event log or event ID in my [Windows mindmaps](https://github.com/mdecrevoisier/Microsoft-eventlog-mindmap) or [Windows auditing baseline](https://github.com/mdecrevoisier/Windows-auditing-baseline) projects.
 
 ## Configuration file path
 The configuration file can be found in the `splunk-windows-input` folder. 
 
-# Out of scope
+# Out of scope / exclusions
 The following topcis are currently not in the scope of this project:
-* Metrics collection (CPU, RAM, EPS, ...).
-* Noise reduction (but suggestions are welcome !).
-* Transformations or parsers.
-* Input configuration for log files (e.g.: `Windows DNS Server debug, DHCP Server transactions, IIS weberserver transactions, Windows Update log ...`
-* Input configuration for PowerShell scripts (e.g.: `Active Directory health and topology, Site link and subnet ...`)
-* Firewall filtering platform events (`IDs 5154, 5156, 5152...`). We recommend instead to use SYSMON `ID 3`.
-* Network share access events (`IDs 5140 and 5145`). We recommend instead to use SYSMON `ID 18`. (named pipes).
 
+### Splunk related
+* Metrics collection (CPU, RAM, EPS ...).
+* Noise reduction (but suggestions are welcome !).
+* Input configuration for log files (e.g.: `Windows DNS Server debug, DHCP Server transactions, IIS web server transactions, PowerShell transcript ...`)
+
+### Windows event IDs related
+* Firewall filtering platform events (`IDs 5154, 5156, 5152...`) which are very noisy. I recommend instead to use SYSMON `ID 3`.
+* Network share access events (`IDs 5140 and 5145`) which are very noisy. I recommend instead to use SYSMON `ID 18` (named pipes).
+* Success NTLM login events (`ID 4776`) which are very noisy. Instead I just collect failed logins.
+* Classic PowerShell events (`ID 600 and 800`) which are very noisy. Instead I only collect modern PowerShell events.
 
 # Sources
 The following sources were used to elaborate the configuration file:
