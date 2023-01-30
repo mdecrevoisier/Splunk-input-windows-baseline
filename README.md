@@ -1,17 +1,17 @@
 # Splunk advanced input configuration for Windows
 
-## Project goal
+# Project goal
 **Splunk-input-windows-baseline** provides a unique `input.conf` configuration file that enables Windows advanced log collection using the *Splunk Universal Forwarder* agent. 
 
-## Project features
-Conversely to a lot of online public resources, this configuration does not stick only to the `Security` event log and does not follow Microsoft [very generic policies](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations). Indeed, it was designed with a precise approach to collect only what is relevant in regards of detection, incident response and forensic purposes. Besides others things, it provides the following **special features**:
-* **Instant deployment** on any host, independently of its type or role: domain controller, server or workstation. This allows to not miss any event in case a specific role or feature is activated on a host and at the same time to simplify maintenance operations.
-* **Allow list approach**: only known and necessary events are collected to limit license impact
-* Coverage for more than **70 native event logs** (including `RDP, BitLocker, AppLocker, PowerShell, WinRM, Defender, Printer, NTLM, VHD, Firewall, OpenSSH, SYSMON, Scheduled tasks`).
-* Coverage for more than **10 server roles event logs** (including `ADDS/Active Directory, ADCS/PKI, ADCS/OCSP, Exchange, SQL Server, DNS server, DHCP server, Hyper-V, ADFS, IIS web server, Docker, NPS Radius, AOVPN`).
-* **Usability** of collected events in my [SIGMA detection rules](https://github.com/mdecrevoisier/SIGMA-detection-rules).
-* Provides a description for each event ID as well as a **MITRE ATT&CK reference** (when applicable).
-* Provides **DFIR capacities** in regards of RDP usage, proxy and network configuration changes, Microsoft Office security alerts, Windows updates, MSI packages execution, activation or deactivation of Windows features, VHD disk mount, private key access, group policy updates, time service, firewall configuration change, default file association change, connected networks, LDAP queries ...
+# Project features
+Conversely to a lot of online resources, this configuration does not stick only to the `Security` event log and does not follow Microsoft [very generic policies](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations). Indeed, it was designed with a precise approach to collect only what is relevant in regards of detection, incident response and forensic purposes. Besides others things, it provides the following **special features**:
+* **Instant deployment** on any host, independently of its type or role: *domain controller, server or workstation*. This allows to not miss any event in case a specific role or feature is activated on a host and at the same time to simplify maintenance operations.
+* **Description for each event ID** together with its **MITRE ATT&CK** reference (when applicable).
+* **Allow list approach**: only known and necessary event IDs are collected to limit license impact
+* Coverage for more than **70 native event logs** (`Security, RDP, BitLocker, AppLocker, PowerShell, WinRM, Defender, Printer, NTLM, VHD, Firewall, OpenSSH, SYSMON, Scheduled tasks`).
+* Coverage for more than **10 server roles or applications** (including `ADDS/Active Directory, ADCS/PKI, ADCS/OCSP, Exchange, SQL Server, DNS server, DHCP server, Hyper-V, ADFS, IIS web server, Docker, NPS Radius, AOVPN`).
+* **Usability** of collected events within my [SIGMA detection rules](https://github.com/mdecrevoisier/SIGMA-detection-rules).
+* Native **DFIR capacities** in regards of *RDP usage, proxy and network configuration changes, Microsoft Office security alerts, Windows updates, MSI packages execution, activation or deactivation of Windows features, VHD disk mount, private key access, group policy updates, time service, firewall configuration change, default file association change, connected networks, LDAP queries ...*
 
 # Configuration file
 The configuration file can be applied on any Windows host (Vista or higher) where the *Splunk Universal Forwarder* is deployed. 
@@ -31,7 +31,8 @@ The following topcis are currently not in the scope of this project:
 * Metrics collection (CPU, RAM, EPS, ...).
 * Noise reduction (but suggestions are welcome !).
 * Transformations or parsers.
-* Input configuration for log files (e.g.: `Windows DNS Server debug, DHCP Server transactions, IIS weberserver transactions ...`
+* Input configuration for log files (e.g.: `Windows DNS Server debug, DHCP Server transactions, IIS weberserver transactions, Windows Update log ...`
+* Input configuration for PowerShell scripts (e.g.: `Active Directory health and topology, Site link and subnet ...`)
 * Firewall filtering platform events (`IDs 5154, 5156, 5152...`). We recommend instead to use SYSMON `ID 3`.
 * Network share access events (`IDs 5140 and 5145`). We recommend instead to use SYSMON `ID 18`. (named pipes).
 
