@@ -4,7 +4,7 @@
 **Splunk-input-windows-baseline** provides a unique `input.conf` configuration file that enables Windows advanced log collection using the *Splunk Universal Forwarder* agent. 
 
 # Project features
-Conversely to a lot of online resources, this configuration does not stick only to the `Security` event log and does not follow Microsoft [very generic policies](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations). Indeed, it was designed with a precise approach to collect only what is relevant in regards of **detection, incident response and forensic** purposes. Besides others things, it provides the following **special features**:
+Conversely to a lot of online resources, this configuration does not stick only to the `Security` event log and does not follow Microsoft [very generic policies](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations) for Windows or for [Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/windows-security-event-id-reference). Indeed, it was designed with a precise approach to collect only what is relevant in regards of **detection, incident response and forensic** purposes. Besides others things, it provides the following **special features**:
 * **Instant deployment** on any server, independently of its type or role. This allows to not miss any event in case a specific role or feature is activated and at the same time to simplify maintenance operations. For workstations, some minor adjustments may need to be performed depending on your environment.
 * **Allow list approach**: only known and necessary event IDs are collected to limit license impact.
 * **Description** for each event ID together with its **MITRE ATT&CK** mapping (when applicable).
@@ -27,7 +27,7 @@ The configuration file can be applied on any Windows host (Vista or higher) wher
 The configuration file can be found in the `splunk-windows-input` folder. 
 
 # Out of scope / exclusions
-The following topcis are currently not in the scope of this project:
+The following topcis or events are currently not in the scope of this project:
 
 ### Splunk related
 * Metrics collection (CPU, RAM, EPS ...).
@@ -38,6 +38,7 @@ The following topcis are currently not in the scope of this project:
 * Firewall filtering platform events (`IDs 5154, 5156, 5152...`) which are very noisy. I recommend instead to use SYSMON `ID 3`.
 * Network share access events (`IDs 5140 and 5145`) which are very noisy. I recommend instead to use SYSMON `ID 18` (named pipes).
 * Success NTLM login events (`ID 4776`) which are very noisy. Instead I just collect failed logins.
+* NTLM events (`8001, 8002, 8003`) which can be very noisy. Instead I just collect  ID `8004`.
 * Classic PowerShell events (`ID 600 and 800`) which are very noisy. Instead I only collect modern PowerShell events.
 
 # Sources
