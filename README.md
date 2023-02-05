@@ -1,7 +1,7 @@
 # Splunk advanced input configuration for Windows
 
 ## Project goal
-**Splunk-input-windows-baseline** provides a unique `input.conf` configuration file that enables Windows advanced log collection based on the MITRE Att&ck framework using the *Splunk Universal Forwarder* agent.
+**Splunk-input-windows-baseline** provides a unique `input.conf` configuration file that enables Windows advanced log collection based on the MITRE ATT&CK framework using the *Splunk Universal Forwarder* agent.
 ![](/pictures/mitre.png)
 
 ## Project features
@@ -41,6 +41,7 @@ The following topcis or events are currently not in the scope of this project:
 * Success NTLM login events (`ID 4776`) which are very noisy. Instead I just collect the failed logins.
 * NTLM events (`8001, 8002, 8003`) which can be very noisy. Instead I just collect  ID `8004`.
 * Classic PowerShell events (`ID 600 and 800`) which are very noisy. Instead I only collect modern PowerShell events.
+* Permissions changed on object (`ID 4670: File System, Registry, Authentication Policy and Authorization Policy). These events are very noisy and instead I suggest to rather focus on the offensive actions (PowerShell, Command excecution...`) that could trigger these permissions changes.
 
 ## Sources
 The following sources were used to elaborate the configuration file:
