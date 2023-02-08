@@ -28,7 +28,7 @@ The configuration file can be applied on any Windows host (Vista or higher) wher
 The configuration file can be found in the `splunk-windows-input` folder. 
 
 ## Out of scope / exclusions
-The following topcis or events are currently not in the scope of this project:
+The following topics or events are currently not in the scope of this project:
 
 #### Splunk related
 * Metrics collection (CPU, RAM, EPS ...).
@@ -37,9 +37,9 @@ The following topcis or events are currently not in the scope of this project:
 
 #### Windows event IDs related
 * Firewall filtering platform events (`IDs 5154, 5156, 5152...`) which are very noisy. I recommend instead to use SYSMON `ID 3`.
-* Network share access events (`IDs 5140 and 5145`) which are very noisy. I recommend instead to use SYSMON `ID 18` (named pipes).
-* Success NTLM login events (`ID 4776`) which are very noisy. Instead I just collect the failed logins.
-* NTLM events (`8001, 8002, 8003`) which can be very noisy. Instead I just collect  ID `8004`.
+* Network share access events (`IDs 5140, 5145`) which are very noisy. I recommend instead to use SYSMON `ID 18` (named pipes).
+* Success NTLM login events (`ID 4776`) which are very noisy. Instead I just collect the failed ones.
+* NTLM events (`8001, 8002, 8003, 8004`) which can be very noisy. Instead I suggest to use them only when necessary.
 * Classic PowerShell events (`ID 600 and 800`) which are very noisy. Instead I only collect modern PowerShell events.
 * Permissions changed on object (`ID 4670: File System, Registry, Authentication Policy and Authorization Policy). These events are very noisy and instead I suggest to rather focus on the offensive actions (PowerShell, Command excecution...`) that could trigger these permissions changes.
 
