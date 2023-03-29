@@ -22,7 +22,7 @@ The configuration file can be applied on any Windows host (Vista or higher) wher
 * Some stanzas are currently set to `disabled = 1`. This is due to a lack of documentation, time, testing or just not found documentation. Once reliable information will be obtained, I will update the configuration. Improvements or suggestions are welcome!
 * Some stanzas are marked with `!!! EVENT LOG FILE DISABLED PER DEFAULT !!!`. This means that the event log is disabled per default and needs to be activated. This can be done manually or per GPO following the instructions from my project [Windows auditing baseline](https://github.com/mdecrevoisier/Windows-auditing-baseline).
 * Whitelists and blacklists are built using the `renderXml = true` option. If you disabled it, they will stop working.
-* A unique identifier is provided next to each category (except for the `Security` event log). This should allow you to easily retrieve more information about the event log or event ID in my [Windows mindmaps](https://github.com/mdecrevoisier/Microsoft-eventlog-mindmap) or [Windows auditing baseline](https://github.com/mdecrevoisier/Windows-auditing-baseline) projects.
+* A unique identifier is provided next to each category (except for the `Security` event log). This should allow you to easily retrieve more information about the event log or event ID from my [Windows mindmaps](https://github.com/mdecrevoisier/Microsoft-eventlog-mindmap) or [Windows auditing baseline](https://github.com/mdecrevoisier/Windows-auditing-baseline) projects.
 
 ### Configuration file path
 The configuration file can be found in the `splunk-windows-input` folder. 
@@ -41,7 +41,7 @@ The following topics or events are currently not in the scope of this project:
 * Success NTLM login events (`ID 4776`) which are very noisy. Instead I just collect the failed ones.
 * NTLM events (`8001, 8002, 8003, 8004`) which can be very noisy. Instead I suggest to use them only when necessary.
 * Classic PowerShell events (`ID 600 and 800`) which are very noisy. Instead I only collect modern PowerShell events.
-* Permissions changed on object (`ID 4670: File System, Registry, Authentication Policy and Authorization Policy). These events are very noisy and instead I suggest to rather focus on the offensive actions (PowerShell, Command excecution...`) that could trigger these permissions changes.
+* Permissions changed on object (`ID 4670: File System, Registry, Authentication Policy and Authorization Policy`). These events are very noisy and instead I suggest to rather focus on the offensive actions (PowerShell, Command excecution...) that could trigger these permissions changes.
 
 ## Sources
 The following sources were used to elaborate the configuration file:
