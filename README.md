@@ -61,3 +61,4 @@ The following sources were used to elaborate the configuration file:
 * **Windows events auditing per subcategory**: https://girl-germs.com/?p=363
 * **Joint Sigint Cyber Unit logging essential**: https://github.com/JSCU-NL/logging-essentials/blob/main/WindowsEventLogging.adoc#account-activity
 * **Windows 10 & Windows 11 changes in eventlog**: https://github.com/AndrewRathbun/SANSGoldPaperResearch_FOR500_Rathbun/tree/main/EventLogs 
+* **MITRE Sensor mapping**: https://center-for-threat-informed-defense.github.io/sensor-mappings-to-attack/levels/mapping_winevtx/
