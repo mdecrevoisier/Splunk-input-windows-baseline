@@ -48,6 +48,7 @@ The following sources were used to elaborate the configuration file:
 * **Event log mindmap**: https://github.com/mdecrevoisier/Microsoft-eventlog-mindmap
 * **Palantir WEF/WEC**: https://github.com/palantir/windows-event-forwarding
 * **Notable events**: https://github.com/TonyPhipps/SIEM/blob/master/Notable-Event-IDs.md#microsoft-windows-winrmoperational
+* **Eventlog Compendium**: https://eventlog-compendium.streamlit.app/
 * **Yamato** tool suite: https://github.com/Yamato-Security
 * **Event forwarding guidance**: https://github.com/nsacyber/Event-Forwarding-Guidance/blob/master/Events/README.md
 * **NSA guidance**: https://apps.nsa.gov/iaarchive/library/ia-guidance/security-configuration/applications/assets/public/upload/Spotting-the-Adversary-with-Windows-Event-Log-Monitoring.pdf
